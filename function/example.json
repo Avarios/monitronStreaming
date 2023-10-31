@@ -1,0 +1,94 @@
+ {
+    "timestamp": "2023-10-29 16:38:07.476",
+    "eventId": "180",
+    "version": "2.0",
+    "accountId": "096573865771",
+    "projectName": "adfsmarthome",
+    "eventType": "measurement",
+    "eventPayload": {
+        "siteName": "Site 1",
+        "assetName": "Heizung 1",
+        "positionName": "Anders",
+        "assetPositionURL": "https://app.monitron.aws/#/61qza4arkr/5bxx2s8f4l/@assets/161qssmk0h/0s7tk78lh6/@details",
+        "sensor": {
+            "physicalId": "45a8b30f6f8f",
+            "rssi": -45
+        },
+        "gateway": {
+            "physicalId": "cd9e483858ae"
+        },
+        "measurementTrigger": "periodic",
+        "sequenceNo": 180,
+        "features": {
+            "acceleration": {
+                "band0To6000Hz": {
+                    "xAxis": {
+                        "rms": 0.2227
+                    },
+                    "yAxis": {
+                        "rms": 0.8383
+                    },
+                    "zAxis": {
+                        "rms": 9.1538
+                    }
+                },
+                "band10To1000Hz": {
+                    "totalVibration": {
+                        "absMax": 0.1461,
+                        "absMin": 0,
+                        "crestFactor": 2.767,
+                        "rms": 0.0528
+                    },
+                    "xAxis": {
+                        "rms": 0.0311
+                    },
+                    "yAxis": {
+                        "rms": 0.0263
+                    },
+                    "zAxis": {
+                        "rms": 0.0335
+                    }
+                }
+            },
+            "velocity": {
+                "band10To1000Hz": {
+                    "totalVibration": {
+                        "absMax": 0.2994,
+                        "absMin": 0,
+                        "crestFactor": 2138.0899,
+                        "rms": 0.14
+                    },
+                    "xAxis": {
+                        "rms": 0.0748
+                    },
+                    "yAxis": {
+                        "rms": 0.0374
+                    },
+                    "zAxis": {
+                        "rms": 0.1123
+                    }
+                }
+            },
+            "temperature": 45.15
+        },
+        "models": {
+            "temperatureML": {
+                "previousPersistentClassificationOutput": "HEALTHY",
+                "persistentClassificationOutput": "HEALTHY",
+                "pointwiseClassificationOutput": "INITIALIZING"
+            },
+            "vibrationISO": {
+                "isoClass": "CLASS4",
+                "mutedThreshold": null,
+                "previousPersistentClassificationOutput": "HEALTHY",
+                "persistentClassificationOutput": "HEALTHY",
+                "pointwiseClassificationOutput": "HEALTHY"
+            },
+            "vibrationML": {
+                "previousPersistentClassificationOutput": "HEALTHY",
+                "persistentClassificationOutput": "HEALTHY",
+                "pointwiseClassificationOutput": "INITIALIZING"
+            }
+        }
+    }
+}
