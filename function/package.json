@@ -10,6 +10,8 @@
   "license": "ISC",
 
   "dependencies": {
-    "@aws-sdk/client-timestream-write":"3.438.0"
+    "@aws-sdk/client-dynamodb": "3.441.0",
+    "@aws-sdk/lib-dynamodb": "3.441.0",
+    "@aws-sdk/util-dynamodb": "3.441.0"
   }
 }

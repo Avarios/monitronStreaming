@@ -2,13 +2,14 @@
 import { Stack  } from 'aws-cdk-lib'
 import { IRole } from 'aws-cdk-lib/aws-iam'
 import { SqsDlq } from 'aws-cdk-lib/aws-lambda-event-sources'
-import { IQueue, Queue } from 'aws-cdk-lib/aws-sqs'
+import { Queue } from 'aws-cdk-lib/aws-sqs'
+import { Construct } from 'constructs'
 
 type SqsStackProps = {
     ConsumerRole:IRole
 }
 
-export class DlqStack extends Stack { 
+export class DlqStack extends Construct { 
 
     private dlq:SqsDlq;
 

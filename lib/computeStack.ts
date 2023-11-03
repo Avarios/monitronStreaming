@@ -2,9 +2,9 @@ import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs'
 import { KinesisEventSource, SqsDlq } from 'aws-cdk-lib/aws-lambda-event-sources';
 import { Stack  } from 'aws-cdk-lib'
 import { IRole } from 'aws-cdk-lib/aws-iam'
-import { IEventSourceDlq, Runtime, StartingPosition } from 'aws-cdk-lib/aws-lambda'
+import { Runtime, StartingPosition } from 'aws-cdk-lib/aws-lambda'
 import { IStream } from 'aws-cdk-lib/aws-kinesis';
-import { IQueue } from 'aws-cdk-lib/aws-sqs';
+import { Construct } from 'constructs';
 
 type ComputeStackProps = {
     ConsumerRole:IRole,
@@ -12,7 +12,7 @@ type ComputeStackProps = {
     deadLetterQueue:SqsDlq
 }
 
-export class ComputeStack extends Stack { 
+export class ComputeStack extends Construct { 
     /**
      *
      */

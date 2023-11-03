@@ -1,13 +1,14 @@
 import { IStream, Stream, StreamMode } from 'aws-cdk-lib/aws-kinesis'
 import { Stack  } from 'aws-cdk-lib'
 import { IRole } from 'aws-cdk-lib/aws-iam'
+import { Construct } from 'constructs'
 
 
 type KinesisProps = {
     ConsumerRole:IRole
 }
 
-export class KinesisConstruct extends Stack {
+export class KinesisConstruct extends Construct {
 
     private stream:IStream
 
@@ -16,7 +17,7 @@ export class KinesisConstruct extends Stack {
         
         this.stream = new Stream(parent,"MonitronStream", {
             streamName:"monitronDataStream",
-            streamMode:StreamMode.ON_DEMAND
+            streamMode: StreamMode.ON_DEMAND
         });
 
         this.stream.grantRead(props.ConsumerRole);

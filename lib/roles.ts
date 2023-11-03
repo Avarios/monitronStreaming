@@ -1,28 +1,23 @@
 
-import { Stack  } from 'aws-cdk-lib'
-import { Effect, IRole, PolicyStatement, Role, ServicePrincipal } from 'aws-cdk-lib/aws-iam'
+import { Stack } from 'aws-cdk-lib'
+import { IRole, Role, ServicePrincipal } from 'aws-cdk-lib/aws-iam'
+import { Construct } from 'constructs';
 
-export class RoleStack extends Stack { 
-    private lambdaRole:IRole
+export class RoleStack extends Construct {
+    private lambdaRole: IRole
 
-    constructor(parent:Stack,id:string,monitronArn:string) {
-        super(parent,id);
+    constructor(parent: Stack, id: string) {
+        super(parent, id);
 
 
-        const role = new Role(parent,"lambdaRole",{
-            assumedBy:new ServicePrincipal("lambda.amazonaws.com")
+        const role = new Role(parent, "lambdaRole", {
+            assumedBy: new ServicePrincipal("lambda.amazonaws.com")
         })
-
-        role.addToPolicy(new PolicyStatement({
-            actions:["timestream:DescribeEndpoints"],
-            effect:Effect.ALLOW,
-            resources:[monitronArn]
-        }))
 
         this.lambdaRole = role;
     }
 
-    get LambdaRole():IRole {
+    get LambdaRole(): IRole {
         return this.lambdaRole;
     }
 }

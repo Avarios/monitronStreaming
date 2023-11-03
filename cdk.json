@@ -1,5 +1,5 @@
 {
-  "app": "npx ts-node --prefer-ts-exts bin/monitron_to_timestream.ts",
+  "app": "npx ts-node --prefer-ts-exts bin/monitronInfrastructure.ts",
   "watch": {
     "include": [
       "**"
