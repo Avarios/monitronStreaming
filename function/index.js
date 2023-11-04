@@ -22,7 +22,7 @@ export const handler = async (event) => {
             TableName:TABLE_NAME,
             Item:sensorData
         }));
-        if (result.$metadata.httpStatusCode =! 500) {
+        if (result.$metadata.httpStatusCode != 500) {
             console.log(sensorData);
         }
         else {
