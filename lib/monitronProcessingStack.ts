@@ -1,6 +1,6 @@
 import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs'
 import { KinesisEventSource, SqsDlq } from 'aws-cdk-lib/aws-lambda-event-sources';
-import { Stack, StackProps } from 'aws-cdk-lib'
+import { RemovalPolicy, Stack, StackProps } from 'aws-cdk-lib'
 import { IRole, Role, ServicePrincipal } from 'aws-cdk-lib/aws-iam'
 import { Runtime, StartingPosition } from 'aws-cdk-lib/aws-lambda'
 import { IStream, Stream, StreamMode } from 'aws-cdk-lib/aws-kinesis';
@@ -21,7 +21,7 @@ export class MonitronProcessingStack extends Stack {
             runtime: Runtime.NODEJS_18_X,
         });
         const queue = new Queue(this, "kinesisEventSourceDql", {
-            queueName: "dlqKinesisEvents"
+            queueName: "dlqKinesisEvents",
         });
 
         queue.grantSendMessages(func);
@@ -55,6 +55,7 @@ export class MonitronProcessingStack extends Stack {
                 type: AttributeType.STRING
             },
             billingMode: BillingMode.PAY_PER_REQUEST,
+            removalPolicy: RemovalPolicy.DESTROY
         });
         func.addEnvironment("TABLE_NAME", table.tableName);
         table.grantWriteData(func);
