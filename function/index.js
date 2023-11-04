@@ -15,8 +15,9 @@ export const handler = async (event) => {
         const sensorData = {
             id: body.eventPayload.sensor.physicalId,
             temperature: body.eventPayload.features.temperature,
-            timestamp:body.eventPayload.timestamp
+            timestamp:body.timestamp
         };
+        console.log(sensorData);
         const result = await client.send(new PutCommand({
             TableName:TABLE_NAME,
             Item:sensorData
