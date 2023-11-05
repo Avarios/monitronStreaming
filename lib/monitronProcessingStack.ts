@@ -7,6 +7,7 @@ import { IStream, Stream, StreamMode } from 'aws-cdk-lib/aws-kinesis';
 import { Construct } from 'constructs';
 import { Queue } from 'aws-cdk-lib/aws-sqs';
 import { AttributeType, BillingMode, Table } from 'aws-cdk-lib/aws-dynamodb';
+import { RetentionDays } from 'aws-cdk-lib/aws-logs';
 
 export class MonitronProcessingStack extends Stack {
 
@@ -19,6 +20,7 @@ export class MonitronProcessingStack extends Stack {
             entry: "./function/index.js",
             handler: "handler",
             runtime: Runtime.NODEJS_18_X,
+            logRetention:RetentionDays.ONE_DAY,
         });
         const queue = new Queue(this, "kinesisEventSourceDql", {
             queueName: "dlqKinesisEvents",
@@ -47,11 +49,11 @@ export class MonitronProcessingStack extends Stack {
 
         const table = new Table(this, "monitronDataTable", {
             partitionKey: {
-                name: "timestamp",
+                name: "id",
                 type: AttributeType.STRING
             },
             sortKey: {
-                name: "id",
+                name: "timestamp",
                 type: AttributeType.STRING
             },
             billingMode: BillingMode.PAY_PER_REQUEST,
